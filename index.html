@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature, Carefully Cultivated | Environmental & Botanical Science</title>
+</head>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Style & Design Tokens matching exact watercolor green palette -->
+    <style>
+        :root {
+            --green-pill: #217c50;
+            --green-pill-hover: #1E4933;
+            --green-pill-active: #173B28;
+            --text-heading: #12281C;
+            --text-sub: #274735;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #12281C;
+            min-height: 100vh;
+            background-color: #386049;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .font-serif-cormorant {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Organic Watercolor Gradient Background Layers */
+        .watercolor-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 50% 15%, rgba(204, 224, 198, 0.95) 0%, transparent 55%),
+                radial-gradient(circle at 12% 85%, rgba(43, 78, 57, 0.9) 0%, transparent 50%),
+                radial-gradient(circle at 88% 70%, rgba(42, 80, 58, 0.95) 0%, transparent 55%),
+                linear-gradient(180deg, #A1C0A4 0%, #69987A 35%, #3D6B50 75%, #244935 100%);
+                  background:url("https://i.pinimg.com/736x/2b/1f/31/2b1f31ae2d7e61e23c52329a7abc2417.jpg") center/cover no-repeat fixed;
+        }
+
+        /* Subtle Paper Texture Effect Overlay */
+        .texture-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.18;
+            pointer-events: none;
+            background-image: radial-gradient(#12281C 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
+
+        /* Pill Buttons styling matching reference image */
+        .nav-pill {
+            background-color: var(--green-pill);
+            color: #FFFFFF;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-pill:hover {
+            background-color: var(--green-pill-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .nav-pill.active {
+            background-color: var(--green-pill-active);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bottom Stat Pill Bar */
+        .stat-pill {
+            background-color: var(--green-pill);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Frosted Glass Cards for subpages */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Tab Transition Effects */
+        .tab-view {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .tab-view.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #244935;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #558266;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-emerald-800 selection:text-white">
+
+    <!-- Background Watercolor & Fog Canvas -->
+    <div class="watercolor-bg"></div>
+    <div class="texture-overlay"></div>
+
+    <!-- Mountain Watercolor SVG Silhouette Layers -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
+        <svg class="w-full h-full preserve-3d" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="none">
+            <path d="M0,450 Q360,220 720,380 T1440,310 L1440,900 L0,900 Z" fill="#71A081" opacity="0.4"/>
+            <path d="M0,520 Q400,320 800,480 T1440,410 L1440,900 L0,900 Z" fill="#4B7B5D" opacity="0.5"/>
+            <path d="M0,620 Q320,480 680,590 T1440,510 L1440,900 L0,900 Z" fill="#2E5840" opacity="0.7"/>
+        </svg>
+    </div>
+
+    <!-- Top Header Navigation (Exact Match to Image Layout) -->
+    <header class="relative z-30 pt-6 sm:pt-8 px-4 sm:px-10 max-w-7xl mx-auto w-full">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+            
+            <!-- Left Navigation Group -->
+            <nav class="flex items-center space-x-2 sm:space-x-3">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-pill active px-6 sm:px-7 py-2.5 rounded-full text-sm font-medium">
+                    Home
+                </button>
+                <button onclick="switchTab('about')" id="nav-about" class="nav-pill px-6 sm:px-7 py-2.5 rounded-full text-sm font-medium">
+                    About Us
+                </button>
+                <button onclick="switchTab('resources')" id="nav-resources" class="nav-pill px-6 sm:px-7 py-2.5 rounded-full text-sm font-medium">
+                    Resources
+                </button>
+            </nav>
+                <button onclick="switchTab('contact')" id="nav-contact" class="nav-pill px-6 sm:px-7 py-2.5 rounded-full text-sm font-medium flex items-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    <span>Contact</span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content Application Body -->
+    <main class="relative z-10 flex-grow max-w-7xl mx-auto px-4 sm:px-10 w-full flex flex-col justify-between pt-8 sm:pt-12 pb-10">
+        
+        <!-- ================================================================= -->
+        <!-- TAB 1: HOME (Exact Visual & Typography Replica of Image) -->
+        <!-- ================================================================= -->
+        <section id="tab-home" class="tab-view active my-auto py-4">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+<!-- Left Title Column -->
+<div class="lg:col-span-7 space-y-5">
+    <!-- Main Title: Size reduced slightly, keeping the elegant look -->
+    <h1 class="font-serif-cormorant text-5xl sm:text-6xl lg:text-7xl xl:text-[7rem] font-semibold text-[#12281C] tracking-tight leading-[1.05] drop-shadow-md">
+        Nature, Carefully<br class="hidden sm:block" /> Cultivated.
+    </h1>
+    
+    <!-- Subtitle: Reduced size and adjusted border/padding slightly -->
+    <p class="font-serif-cormorant italic text-xl sm:text-2xl lg:text-3xl text-white font-medium leading-relaxed max-w-2xl border-l-[5px] border-[#a4c639] pl-5 py-1.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">
+        Every plantation is designed to create lasting environmental impact.
+    </p>
+</div>
+        </section>
+
+       <!-- ================================================================= -->
+<!-- TAB 2: ABOUT US (Frosted Light Version) -->
+<!-- ================================================================= -->
+<section id="tab-about" class="tab-view my-6">
+    <!-- Clean Frosted Glass Panel -->
+    <div class="bg-white/60 backdrop-blur-2xl border border-white/80 rounded-[2rem] p-8 sm:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.15)] space-y-8">
+        
+        <div class="max-w-3xl space-y-4">
+            <!-- Heading: Dark and crisp -->
+            <h2 class="font-serif-cormorant text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#12281C] leading-tight">
+                Empirical Botanical Science for Ecosystem Longevity
+            </h2>
+            
+            <!-- Body text: Dark grey for readability -->
+            <p class="text-sm sm:text-base text-[#274735] leading-relaxed max-w-2xl font-medium">
+                Our practice bridges soil microbiome optimization, satellite telemetry, and native plant genetics to build self-sustaining carbon sinks.
+            </p>
+        </div>
+
+        <!-- Cards Grid: Solid white cards on frosted background -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+            
+            <div class="bg-white/80 border border-white p-6 rounded-2xl space-y-4 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 rounded-full bg-[#217c50] text-white flex items-center justify-center font-bold text-sm shadow-md">
+                    01
+                </div>
+                <h3 class="font-serif-cormorant text-2xl font-semibold text-[#12281C]">Soil Chemistry</h3>
+                <p class="text-xs sm:text-sm text-[#274735] leading-relaxed">
+                    Analyzing fungal mycorrhizal networks and nitrogen dynamics to prepare nutrient-rich planting strata.
+                </p>
+            </div>
+
+            <div class="bg-white/80 border border-white p-6 rounded-2xl space-y-4 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 rounded-full bg-[#217c50] text-white flex items-center justify-center font-bold text-sm shadow-md">
+                    02
+                </div>
+                <h3 class="font-serif-cormorant text-2xl font-semibold text-[#12281C]">Genomic Selection</h3>
+                <p class="text-xs sm:text-sm text-[#274735] leading-relaxed">
+                    Cultivating indigenous canopy and understory species proven to withstand drought and regional temperature spikes.
+                </p>
+            </div>
+
+            <div class="bg-white/80 border border-white p-6 rounded-2xl space-y-4 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 rounded-full bg-[#217c50] text-white flex items-center justify-center font-bold text-sm shadow-md">
+                    03
+                </div>
+                <h3 class="font-serif-cormorant text-2xl font-semibold text-[#12281C]">Telemetry Monitoring</h3>
+                <p class="text-xs sm:text-sm text-[#274735] leading-relaxed">
+                    Continuous multi-spectral drone analysis tracking canopy expansion and leaf moisture levels across all sites.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+        <!-- ================================================================= -->
+        <!-- TAB 3: RESOURCES (Client Editable Section) -->
+        <!-- ================================================================= -->
+        <section id="tab-resources" class="tab-view my-6">
+            <div class="glass-panel p-8 sm:p-12 space-y-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div class="space-y-2">
+                        <h2 class="font-serif-cormorant text-4xl sm:text-5xl font-medium text-[#12281C]">Publications & Research Guides</h2>
+                    </div>
+
+                    <button onclick="openAddModal()" class="px-6 py-2.5 rounded-full bg-[#2C6348] hover:bg-[#1E4933] text-white font-medium text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>Add New Resource</span>
+                    </button>
+                </div>
+
+                <!-- Search and Categories -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/30 p-3 rounded-2xl border border-white/40">
+                    <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto">
+                        <button onclick="filterResources('All')" class="res-cat-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-[#2C6348] text-white">All</button>
+                        <button onclick="filterResources('Field Manual')" class="res-cat-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white/40 text-[#12281C]">Field Manuals</button>
+                        <button onclick="filterResources('Soil Assay')" class="res-cat-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white/40 text-[#12281C]">Soil Assays</button>
+                        <button onclick="filterResources('Whitepaper')" class="res-cat-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white/40 text-[#12281C]">Whitepapers</button>
+                    </div>
+
+                    <input type="text" id="res-search" oninput="renderResources()" placeholder="Search publications..." 
+                           class="w-full sm:w-64 px-4 py-2 rounded-full bg-white/60 border border-white/60 text-xs text-[#12281C] placeholder-[#12281C]/50 focus:outline-none focus:ring-2 focus:ring-[#2C6348]">
+                </div>
+
+                <!-- Resources List Container -->
+                <div id="resources-list-container" class="space-y-3">
+                    <!-- Rendered by JS -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 4: CONTACT US (Direct Email Action) -->
+        <!-- ================================================================= -->
+        <section id="tab-contact" class="tab-view my-6">
+            <div class="glass-panel p-8 sm:p-12 max-w-3xl mx-auto space-y-8">
+                
+                <div class="text-center space-y-3">
+                    <h2 class="font-serif-cormorant text-4xl sm:text-5xl font-medium text-[#12281C]">Connect With Our Scientists</h2>
+                    <p class="text-sm text-[#1F3D2C]">
+                        For research inquiries, site visits, or collaboration proposals.
+                    </p>
+                </div>
+
+                <!-- Primary Mailto Button (Client Requested One Button Email Link) -->
+                <div class="text-center pt-2">
+                    <a href="mailto:contact@naturecultivated.org?subject=Botanical%20Science%20Inquiry" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#2C6348] hover:bg-[#1E4933] text-white font-medium text-base tracking-wide shadow-xl transition-all transform hover:-translate-y-0.5">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        <span>Email Us Directly (contact@naturecultivated.org)</span>
+                    </a>
+                </div>
+
+                <div class="relative flex py-2 items-center">
+                    <div class="flex-grow border-t border-black/10"></div>
+                    <span class="flex-shrink mx-4 text-xs font-semibold uppercase tracking-widest text-[#274735]">Or Send a Quick Inquiry</span>
+                    <div class="flex-grow border-t border-black/10"></div>
+                </div>
+
+                <!-- Quick Form -->
+                <form onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[#12281C] font-semibold mb-1">Your Name</label>
+                            <input type="text" id="contact-name" required placeholder="Dr. Sarah Jenkins" class="w-full p-3 rounded-xl bg-white/60 border border-white/60 text-[#12281C] placeholder-[#12281C]/40 focus:outline-none focus:ring-2 focus:ring-[#2C6348]">
+                        </div>
+                        <div>
+                            <label class="block text-[#12281C] font-semibold mb-1">Your Email</label>
+                            <input type="email" id="contact-email" required placeholder="sarah@institution.org" class="w-full p-3 rounded-xl bg-white/60 border border-white/60 text-[#12281C] placeholder-[#12281C]/40 focus:outline-none focus:ring-2 focus:ring-[#2C6348]">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[#12281C] font-semibold mb-1">Message / Project Brief</label>
+                        <textarea id="contact-message" rows="4" required placeholder="Detail your site location or botanical research request..." class="w-full p-3 rounded-xl bg-white/60 border border-white/60 text-[#12281C] placeholder-[#12281C]/40 focus:outline-none focus:ring-2 focus:ring-[#2C6348]"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 bg-[#2C6348] hover:bg-[#1E4933] text-white font-semibold rounded-full tracking-wider uppercase text-xs transition-all shadow-md">
+                        Send Message
+                    </button>
+                </form>
+
+            </div>
+        </section>
+
+        <footer 
+            
+        </footer>
+
+    </main>
+
+    <!-- Modal Dialog: Add Resource (Client Tool) -->
+    <div id="add-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="glass-panel bg-white/90 p-8 rounded-3xl max-w-md w-full border border-white/80 shadow-2xl relative space-y-5">
+            <button onclick="closeAddModal()" class="absolute top-5 right-5 text-[#12281C]/60 hover:text-[#12281C] text-lg font-bold">✕</button>
+
+            <div>
+                <span class="text-xs font-semibold uppercase tracking-widest text-[#2C6348]">Client Editor</span>
+                <h3 class="font-serif-cormorant text-3xl font-semibold text-[#12281C]">Add Scientific Resource</h3>
+            </div>
+
+            <form onsubmit="handleAddResourceSubmit(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block text-[#12281C] font-semibold mb-1">Document Title</label>
+                    <input type="text" id="modal-res-title" required placeholder="e.g. Mycorrhizal Diversity in Subtropical Soil" class="w-full p-3 rounded-xl bg-white/80 border border-black/10 text-[#12281C] focus:outline-none focus:ring-2 focus:ring-[#2C6348]">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[#12281C] font-semibold mb-1">Category</label>
+                        <select id="modal-res-cat" class="w-full p-3 rounded-xl bg-white/80 border border-black/10 text-[#12281C] focus:outline-none focus:ring-2 focus:ring-[#2C6348]">
+                            <option value="Field Manual">Field Manual</option>
+                            <option value="Soil Assay">Soil Assay</option>
+                            <option value="Whitepaper">Whitepaper</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[#12281C] font-semibold mb-1">File Tag</label>
+                        <input type="text" id="modal-res-tag" placeholder="PDF (3.1 MB)" class="w-full p-3 rounded-xl bg-white/80 border border-black/10 text-[#12281C] focus:outline-none focus:ring-2 focus:ring-[#2C6348]">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[#12281C] font-semibold mb-1">Abstract / Summary</label>
+                    <textarea id="modal-res-desc" rows="3" required placeholder="Brief description of research findings or field protocols..." class="w-full p-3 rounded-xl bg-white/80 border border-black/10 text-[#12281C] focus:outline-none focus:ring-2 focus:ring-[#2C6348]"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-[#2C6348] hover:bg-[#1E4933] text-white font-semibold rounded-full uppercase tracking-wider text-xs shadow-md">
+                    Save & Publish Resource
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast Element -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-[#2C6348] text-white px-5 py-3 rounded-full text-xs font-medium shadow-2xl flex items-center gap-2">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-300"></i>
+        <span id="toast-msg">Action completed</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Editable Resources State (Client Requirement)
+        let resourcesData = [
+            { id: 1, title: "Microbiome & Fungal Hyphae Soil Diagnostic Manual", category: "Soil Assay", tag: "PDF (4.2 MB)", desc: "Assay procedures for testing mycorrhizal soil health across new planting sectors." },
+            { id: 2, title: "Multispectral Canopy Drone Mapping Guidelines", category: "Field Manual", tag: "PDF (2.1 MB)", desc: "Standard flight parameters and foliage density metrics using satellite telemetry." },
+            { id: 3, title: "Subtropical Tree Carbon Capture Assessment 2026", category: "Whitepaper", tag: "PDF (3.8 MB)", desc: "Empirical study measuring net carbon capture per acre over 5 growth cycles." }
+        ];
+
+        let activeResourceCat = 'All';
+
+        // Initialize Lucide icons & Page Setup
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderResources();
+        });
+
+        // Tab Switcher Function
+        function switchTab(tabId) {
+            // Hide all tab views
+            document.querySelectorAll('.tab-view').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Deactivate all nav pills
+            document.querySelectorAll('.nav-pill').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Activate selected tab & pill
+            const targetTab = document.getElementById('tab-' + tabId);
+            const targetBtn = document.getElementById('nav-' + tabId);
+
+            if (targetTab) targetTab.classList.add('active');
+            if (targetBtn) targetBtn.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render Editable Resources List
+        function filterResources(cat) {
+            activeResourceCat = cat;
+            document.querySelectorAll('.res-cat-btn').forEach(btn => {
+                btn.className = "res-cat-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white/40 text-[#12281C]";
+            });
+            event.target.className = "res-cat-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-[#2C6348] text-white";
+            renderResources();
+        }
+
+        function renderResources() {
+            const container = document.getElementById('resources-list-container');
+            const searchVal = document.getElementById('res-search')?.value.toLowerCase() || '';
+            container.innerHTML = '';
+
+            const filtered = resourcesData.filter(r => {
+                const matchCat = activeResourceCat === 'All' || r.category === activeResourceCat;
+                const matchSearch = r.title.toLowerCase().includes(searchVal) || r.desc.toLowerCase().includes(searchVal);
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-xs text-[#274735]">No scientific resources found.</div>`;
+                return;
+            }
+
+            filtered.forEach(r => {
+                const item = document.createElement('div');
+                item.className = "bg-white/40 border border-white/50 p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/50 transition-all";
+                item.innerHTML = `
+                    <div class="space-y-1 max-w-2xl">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#2C6348] text-white">
+                                ${r.category}
+                            </span>
+                            <span class="text-[11px] font-mono text-[#274735]">${r.tag}</span>
+                        </div>
+                        <h4 class="font-serif-cormorant text-xl font-semibold text-[#12281C]">${r.title}</h4>
+                        <p class="text-xs text-[#274735]">${r.desc}</p>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button onclick="showToast('Downloading document: ${r.title}')" class="px-4 py-2 rounded-full bg-[#2C6348] text-white text-xs font-medium hover:bg-[#1E4933] transition-colors flex items-center gap-1.5">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            <span>Download</span>
+                        </button>
+                        <button onclick="deleteResource(${r.id})" class="px-3 py-2 rounded-full bg-red-800/10 hover:bg-red-800/20 text-red-900 text-xs font-medium transition-colors">
+                            Delete
+                        </button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+            lucide.createIcons();
+        }
+
+        // Add Resource Modal Logic
+        function openAddModal() {
+            document.getElementById('add-modal').classList.remove('hidden');
+        }
+
+        function closeAddModal() {
+            document.getElementById('add-modal').classList.add('hidden');
+        }
+
+        function handleAddResourceSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('modal-res-title').value;
+            const category = document.getElementById('modal-res-cat').value;
+            const tag = document.getElementById('modal-res-tag').value || 'PDF Guide';
+            const desc = document.getElementById('modal-res-desc').value;
+
+            resourcesData.unshift({
+                id: Date.now(),
+                title: title,
+                category: category,
+                tag: tag,
+                desc: desc
+            });
+
+            renderResources();
+            closeAddModal();
+            showToast('New resource successfully published!');
+
+            document.getElementById('modal-res-title').value = '';
+            document.getElementById('modal-res-desc').value = '';
+        }
+
+        function deleteResource(id) {
+            resourcesData = resourcesData.filter(r => r.id !== id);
+            renderResources();
+            showToast('Resource removed.');
+        }
+
+        // Contact Form Submission (Triggers Mailto)
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+
+            const subject = encodeURIComponent(`Inquiry from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+            window.location.href = `mailto:contact@naturecultivated.org?subject=${subject}&body=${body}`;
+            showToast('Opening email client...');
+        }
+
+        // Toast Feedback System
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
